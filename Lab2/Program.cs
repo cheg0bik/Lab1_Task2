@@ -1,18 +1,18 @@
 ﻿namespace Lab2
 {
-    interface IVisitor // Интерфейс визитора 
+    interface IVisitor
     {
         void visit(Paragraph paragraph);
         void visit(Image image);
         void visit(Table table);
     }
 
-    abstract class DocumentElement //Абстрактный класс для различных документов
+    abstract class DocumentElement
     {
         public abstract void Accept(IVisitor visitor);
     }
 
-    class Paragraph : DocumentElement //Наследование от абстрактного класса
+    class Paragraph : DocumentElement 
     {
         public string text
         {
@@ -29,7 +29,7 @@
             v.visit(this);
         }
     }
-    class Image : DocumentElement //Наследование от абстрактного класса
+    class Image : DocumentElement
     {
         public string image
         {
@@ -44,9 +44,8 @@
             v.visit(this);
         }
     }
-    class Table : DocumentElement //Наследование от абстрактного класса
+    class Table : DocumentElement 
     {
-        // Хз как реализовать хранение таблицы :(
         public string table
         {
             get; set;
@@ -62,9 +61,8 @@
             v.visit(this);
         }
     }
-    class HTMLVisitor : IVisitor // Реализация интерфейса
+    class HTMLVisitor : IVisitor
     {
-        //Добавить реализацию превращения в HTML. хз как :(
         public void visit(Paragraph paragraph)
         {
             
@@ -79,9 +77,8 @@
         }
     }
 
-    class MarkdownVisitor : IVisitor // Реализация интерфейса
+    class MarkdownVisitor : IVisitor
     {
-        //Добавить реализацию превращения в Markdown. хз как :(
         public void visit(Paragraph paragraph)
         {
 
@@ -100,6 +97,11 @@
     {
         private List<DocumentElement> elements = new List<DocumentElement>();
 
+        public add(DocumentElement el)
+        {
+            elements.add(el);
+        }
+        
 
     }
 
@@ -107,9 +109,7 @@
     {
         static void Main(string[] args)
         {
-            string str = "вцйшщлзоавйцшщлва";
-            Paragraph table = new Paragraph(str);
-
+            
         }
     }
 }
